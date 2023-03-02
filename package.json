@@ -20,8 +20,6 @@
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/eslint-parser": "^7.19.1",
     "husky": "^8.0.0"
   }
 }
