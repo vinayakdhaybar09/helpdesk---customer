@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout as HelpdeskLayout, Menu, theme } from "antd";
+import { Layout as HelpdeskLayout, Menu } from "antd";
 import { useRouter } from "next/router";
 import shortLogo from "@/assets/images/logo/logo_short.png";
 // import { Header } from "antd/es/layout/layout";
@@ -29,7 +29,7 @@ const Layout = (props) => {
 
   const [collapsed, setCollapsed] = useState(true);
   // const [login, setLogin] = useState(true);
-  const [currentTab, setCurrentTab] = useState("0");
+  // const [currentTab, setCurrentTab] = useState("0");
 
   // const [currentTab, setCurrentTab] = useState(
   //   path.pathname === "/"
@@ -83,7 +83,7 @@ const Layout = (props) => {
           </div>
           <Menu
             theme="dark"
-            defaultSelectedKeys={currentTab}
+            // defaultSelectedKeys={currentTab}
             onClick={handleMenuChange}
             mode="inline"
             items={items}
