@@ -8,7 +8,7 @@ import { Timeline } from "antd";
 import { BsCircleFill } from "react-icons/bs";
 import withAuth from "@/hooks/useAuth";
 
-const Index = () => {
+const TicketDetail = () => {
   return (
     <div className={`${styles.ticketSectionContainer}`}>
       <div className={`${styles.ticketDetailsContainer}`}>
@@ -230,4 +230,4 @@ const Index = () => {
   );
 };
 
-export default withAuth(Index);
+export default withAuth(TicketDetail);

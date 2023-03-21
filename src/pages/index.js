@@ -1,6 +1,9 @@
+import withAuth from "@/hooks/useAuth";
 import React from "react";
 
 
-export default function Home() {
-  return <>Hello</>
+function Home() {
+  return <>In Home page</>
 }
+
+export default withAuth(Home);

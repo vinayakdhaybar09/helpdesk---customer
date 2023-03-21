@@ -7,6 +7,7 @@ import shortLogo from "@/assets/images/logo/logo_short.png";
 import { HiHome } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import { GiTicket } from "react-icons/gi";
+import { FiLogOut } from "react-icons/fi";
 
 const Layout = (props) => {
   const { Sider } = HelpdeskLayout;
@@ -23,6 +24,7 @@ const Layout = (props) => {
     getItem("Home", "1", <HiHome />),
     getItem("Dashboard", "2", <MdDashboard />),
     getItem("Tickets", "3", <GiTicket />),
+    getItem("Logout", "4", <FiLogOut />),
   ];
 
   const router = useRouter();
@@ -50,11 +52,16 @@ const Layout = (props) => {
         break;
 
       case "2":
-        router.push("/page1");
+        router.push("/tickets");
         break;
 
       case "3":
-        router.push("/page2");
+        router.push("/tickets");
+        break;
+
+      case "4":
+        localStorage.setItem("loggedIn", "loggedout");
+        router.replace("/auth/login");
         break;
 
       default:

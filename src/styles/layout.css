@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background: #ffffff;
   }
   
   .wb-slider .ant-layout-sider {
@@ -45,18 +46,21 @@
     font-weight: 500;
     font-size: 0.9rem;
     font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .wb-slider-collapsed .ant-menu-item {
+    padding-inline: calc(50% - 1.2rem) !important;
+  }
+
+  .wb-slider .ant-menu-item .ant-menu-title-content {
+    margin-inline-start: 1rem;
   }
   
   .wb-slider .ant-menu-item .ant-menu-item-icon,
   .wb-slider-collapsed .ant-menu-item .ant-menu-item-icon {
-    width: 1rem;
-    height: 1rem;
-  }
-  
-  .wb-slider .ant-menu-item-icon,
-  .wb-slider-collapsed .ant-menu-item-icon {
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
   }
   
   .wb-slider .ant-menu-item:hover,
