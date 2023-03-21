@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "@/styles/auth/login.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
 

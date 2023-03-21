@@ -11,6 +11,7 @@ import Link from "next/link";
 
 const Tickets = () => {
   const router = useRouter();
+  const isData = true
 
   const columns = [
     {
@@ -75,17 +76,17 @@ const Tickets = () => {
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-      // console.log(
-      //   `selectedRowKeys: ${selectedRowKeys}`,
-      //   "selectedRows: ",
-      //   selectedRows
-      // );
+      console.info(
+        `selectedRowKeys: ${selectedRowKeys}`,
+        "selectedRows: ",
+        selectedRows
+      );
     },
   };
 
   return (
     <div className={`${style.tickets}`}>
-      {true ? (
+      {isData ? (
         <div className={`${style.ticketsContainer}`}>
           <div className={`${style.ticketsTopBar}`}>
             <button className={`${style.ticketsTopBarButtonWhite}`}>
@@ -94,7 +95,10 @@ const Tickets = () => {
             <button className={`${style.ticketsTopBarButtonWhite}`}>
               <BiFilterAlt /> Filter By
             </button>
-            <button onClick={() => router.push("/tickets/createticket")} className={`${style.ticketsTopBarButtonGray}`}>
+            <button
+              onClick={() => router.push("/tickets/createticket")}
+              className={`${style.ticketsTopBarButtonGray}`}
+            >
               <GrAdd /> New Ticket
             </button>
           </div>
