@@ -1,15 +1,14 @@
 import Layout from "@/components/layout/Layout";
-import store from "@/redux/store";
+import { wrapper } from "@/redux/store";
 import "@/styles/globals.css";
 import "@/styles/layout.css";
 import { Spin } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Provider } from "react-redux";
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
 
-  const router = useRouter()
+  const router = useRouter();
 
   // console.log(router?.route);
 
@@ -29,14 +28,16 @@ export default function App({ Component, pageProps }) {
     <>
       {
         isLoading ? <Spin /> : isAuthenticated === "loggedIn" ?
-          <Provider store={store}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </Provider> :
+
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          :
           <Component {...pageProps} />
       }
     </>
 
   );
 }
+
+export default wrapper.withRedux(App)

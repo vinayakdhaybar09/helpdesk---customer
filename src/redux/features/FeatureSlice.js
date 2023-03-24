@@ -1,4 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { baseUrl } from "@/utilities/utils";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const loginUser = createAsyncThunk(
+  'user/loginUser',
+  async (payload) => {
+    const response = await axios.post(`${baseUrl}/user/login`, payload);
+    return response.data;
+  }
+)
+
 const featuresSlice = createSlice({
   name: "featureName",
   initialState: {
