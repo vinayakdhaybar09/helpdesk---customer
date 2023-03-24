@@ -6,7 +6,7 @@ const featuresSlice = createSlice({
       fullName: "",
       emailId: "",
       phoneNumber: "",
-    },
+    }
   },
   reducers: {
     addUserDetails: (state, action) => {
