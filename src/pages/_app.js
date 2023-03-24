@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("loggedIn");
-    if (isAuthenticated === "loggedout") {
+    if (isAuthenticated === "loggedout" || !isAuthenticated) {
       router.push('/auth/login');
     }
     setIsLoading(false)
