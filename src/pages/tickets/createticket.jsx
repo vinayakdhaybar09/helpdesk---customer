@@ -1,5 +1,5 @@
 import withAuth from "@/hooks/useAuth";
-import React, { useRef } from "react";
+import React from "react";
 import style from "@/styles/tickets/tickets.module.css";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { Select, message, Upload } from "antd";
@@ -8,12 +8,11 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { useRouter } from "next/dist/client/router";
 
 const CreateTicket = () => {
-
   const router = useRouter();
-  const editorRef = useRef(null);
+  // const editorRef = useRef(null);
 
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
+  const handleChange = () => {
+    // console.log(`selected ${value}`);
   };
 
   const { Dragger } = Upload;
@@ -24,7 +23,7 @@ const CreateTicket = () => {
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {
-        console.log(info.file, info.fileList);
+        // console.log(info.file, info.fileList);
       }
       if (status === "done") {
         message.success(`${info.file.name} file uploaded successfully.`);
@@ -32,8 +31,8 @@ const CreateTicket = () => {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
-    onDrop(e) {
-      console.log("Dropped files", e.dataTransfer.files);
+    onDrop() {
+      // console.log("Dropped files", e.dataTransfer.files);
     },
   };
 
@@ -46,7 +45,7 @@ const CreateTicket = () => {
       </div>
       <div className={`${style.createTicketContainer}`}>
         <div className={`${style.createTicketTitle}`}>
-          <button onClick={()=> router.push("/tickets")}>
+          <button onClick={() => router.push("/tickets")}>
             <MdOutlineArrowBack />
           </button>
           <p>Submit a ticket request</p>
@@ -153,7 +152,9 @@ const CreateTicket = () => {
                   or <b>Browse Files</b>
                 </p>
               </Dragger>
-              <p className={`${style.uploadFileIntruction}`}>*You can upload JPEG, PNG, PDF, EXLS, TXT Files</p>
+              <p className={`${style.uploadFileIntruction}`}>
+                *You can upload JPEG, PNG, PDF, EXLS, TXT Files
+              </p>
             </div>
           </div>
           <div className={`${style.col1}`}>

@@ -74,7 +74,7 @@ const Tickets = () => {
   ];
 
   const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
+    onChange: () => {
       // console.log(
       //   `selectedRowKeys: ${selectedRowKeys}`,
       //   "selectedRows: ",
@@ -83,9 +83,11 @@ const Tickets = () => {
     },
   };
 
+  const isDataAvailable = true;
+
   return (
     <div className={`${style.tickets}`}>
-      {true ? (
+      {isDataAvailable ? (
         <div className={`${style.ticketsContainer}`}>
           <div className={`${style.ticketsTopBar}`}>
             <button className={`${style.ticketsTopBarButtonWhite}`}>

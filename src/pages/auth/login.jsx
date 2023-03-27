@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from "react";
-import style from "@/styles/auth/login.module.css";
+import styles from "@/styles/auth/login.module.css";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "@/redux/features/FeatureSlice";
+import loginLogo from "@/assets/images/login/loginLogo.svg";
+import loginImage from "@/assets/images/login/loginImage.svg";
+import {
+  MailOutlined,
+  LockOutlined,
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+} from "@ant-design/icons";
+import { Input } from "antd";
 
 const Login = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
-  const router = useRouter()
-  
+  /* eslint-disable */
+
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("loggedIn");
     if (isAuthenticated === "loggedIn") {
-      router.push('/');
+      router.push("/");
     }
-  }, []);
+  }, [user]);
 
   const [payload, setPayload] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-
 
   const handleInput = (e) => {
     setPayload((prev) => {
@@ -28,31 +41,77 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = () => {
-    localStorage.setItem('loggedIn', "loggedIn");
-    router.replace("/");
-  }
+  const handleSubmit = async () => {
+    dispatch(loginUser(payload));
+    // router.replace("/");
+  };
 
   return (
-    <div className={`${style.loginPage}`}>
-      <div className={`${style.loginFormContainer}`}>
-        <label>UserName</label>
-        <input
-          value={payload.email}
-          name="email"
-          onChange={handleInput}
-          type={"text"}
-          placeholder="Enter Email"
-        />
-        <label>Password</label>
-        <input
-          value={payload.password}
-          name="password"
-          onChange={handleInput}
-          type={"password"}
-          placeholder="Enter Password"
-        />
-      <button onClick={handleSubmit}>Submit</button>
+    <div className={`${styles.loginPageContainer}`}>
+      <img
+        src={loginLogo?.src}
+        alt="Logo"
+        className={`${styles.loginPageImage}`}
+      />
+      <div className={`${styles.loginGridContainer}`}>
+        <div className={`${styles.loginLeftGridWrapper}`}>
+          <div className={`${styles.loginLeftLogoWrapper}`}>
+            <img src={loginLogo?.src} alt="Logo" />
+            <div className={`${styles.loginTagline}`}>Welcome To Twin</div>
+          </div>
+          <div className={`${styles.loginFormContainer}`}>
+            <form onSubmit={handleSubmit}>
+              <div className={`${styles.loginFormFieldContainer}`}>
+                <label className={`${styles.loginFormFieldLabel}`}>Email</label>
+
+                <Input
+                  className={`${styles.loginFormInputField}`}
+                  value={payload.username}
+                  name="username"
+                  autoComplete="off"
+                  onChange={handleInput}
+                  type={"email"}
+                  placeholder="Enter your email"
+                  prefix={
+                    <MailOutlined className={`${styles.loginFormFieldIcons}`} />
+                  }
+                ></Input>
+              </div>
+              <div className={`${styles.loginFormFieldContainer}`}>
+                <label className={`${styles.loginFormFieldLabel}`}>
+                  Password
+                </label>
+                <Input.Password
+                  className={`${styles.loginFormInputField}`}
+                  value={payload.password}
+                  autoComplete="off"
+                  name="password"
+                  onChange={handleInput}
+                  type={"password"}
+                  placeholder="Enter your password"
+                  prefix={
+                    <LockOutlined className={`${styles.loginFormFieldIcons}`} />
+                  }
+                  iconRender={(passwordVisible) =>
+                    passwordVisible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                  }
+                ></Input.Password>
+              </div>
+              <div className={`${styles.loginForgetPassword}`}>
+                Forgot Password?
+              </div>
+              <button
+                className={`${styles.loginFormSubmitBtn}`}
+                type={"submit"}
+              >
+                Log In
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className={`${styles.loginRightGridWrapper}`}>
+          <img src={loginImage?.src} alt="LoginImage" />
+        </div>
       </div>
     </div>
   );
