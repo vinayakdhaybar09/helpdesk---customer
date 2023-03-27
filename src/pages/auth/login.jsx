@@ -41,7 +41,8 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     dispatch(loginUser(payload));
     // router.replace("/");
   };
@@ -70,7 +71,7 @@ const Login = () => {
                   name="username"
                   autoComplete="off"
                   onChange={handleInput}
-                  type={"email"}
+                  type={"text"}
                   placeholder="Enter your email"
                   prefix={
                     <MailOutlined className={`${styles.loginFormFieldIcons}`} />

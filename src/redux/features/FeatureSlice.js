@@ -11,13 +11,9 @@ export const loginUser = createAsyncThunk(
 )
 
 const featuresSlice = createSlice({
-  name: "featureName",
+  name: "user",
   initialState: {
-    userDetails: {
-      fullName: "",
-      emailId: "",
-      phoneNumber: "",
-    },
+    userDetails: {},
   },
   reducers: {
     addUserDetails: (state, action) => {
@@ -31,7 +27,23 @@ const featuresSlice = createSlice({
       };
     },
   },
-  extraReducers: {},
+  extraReducers: (builder) => {
+    // Login user 
+    builder.addCase(loginUser.pending, (state) => {
+      state.userDetailsLoader = true;
+    })
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.userDetails = action.payload
+      localStorage.setItem('loggedIn', "loggedIn");
+      localStorage.setItem('userId', action.payload?._id);
+      localStorage.setItem('token', action.payload?.token);
+      state.userDetailsLoader = false;
+    })
+    builder.addCase(loginUser.rejected, (state) => {
+      state.userDetailsLoader = false;
+    })
+
+  },
 });
 
 export const { addUserDetails } = featuresSlice.actions;
