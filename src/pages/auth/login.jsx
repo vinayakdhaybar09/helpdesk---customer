@@ -10,8 +10,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  /* eslint-disable */
-
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("loggedIn");
     if (isAuthenticated === "loggedIn") {
