@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/auth/login.module.css";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "@/redux/features/FeatureSlice";
+import { loginUser } from "@/redux/features/User";
 import loginLogo from "@/assets/images/login/loginLogo.svg";
 import loginImage from "@/assets/images/login/loginImage.svg";
 import {

@@ -10,7 +10,7 @@ export const loginUser = createAsyncThunk(
   }
 )
 
-const featuresSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState: {
     userDetails: {},
@@ -46,5 +46,5 @@ const featuresSlice = createSlice({
   },
 });
 
-export const { addUserDetails } = featuresSlice.actions;
-export default featuresSlice.reducer;
+export const { addUserDetails } = userSlice.actions;
+export default userSlice.reducer;

@@ -1,9 +1,9 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 
-import FeatureSlice from "./features/FeatureSlice";
+import userSlice from "./features/User";
 // const rootReducer = combineReducers({
-//   featureName: FeatureSlice,
+//   featureName: userSlice,
 // });
 
 // const store = configureStore({
@@ -17,7 +17,7 @@ import FeatureSlice from "./features/FeatureSlice";
 // });
 
 const combineReducer = combineReducers({
-  user: FeatureSlice,
+  user: userSlice,
 })
 
 export const store = () => 
