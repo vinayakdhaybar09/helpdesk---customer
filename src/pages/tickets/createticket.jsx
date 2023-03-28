@@ -47,14 +47,14 @@ const CreateTicket = () => {
         <p>
           All Tickets / <b>New Ticket</b>
         </p>
-      </div>
-      <div className={`${style.createTicketContainer}`}>
         <div className={`${style.createTicketTitle}`}>
           <button onClick={() => router.push("/tickets")}>
             <MdOutlineArrowBack />
           </button>
           <p>Submit a ticket request</p>
         </div>
+      </div>
+      <div className={`${style.createTicketContainer}`}>
         <div className={`${style.createTicketForm}`}>
           <div className={`${style.col1}`}>
             <label>Ticket Summary</label>
@@ -106,52 +106,14 @@ const CreateTicket = () => {
               />
             </div>
           </div>
-          {/* <div className={`${style.col1}`}>
-            <Editor
-              onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue="<p>This is the initial content of the editor.</p>"
-              init={{
-                height: 500,
-                menubar: false,
-                plugins: [
-                  "a11ychecker",
-                  "advlist",
-                  "advcode",
-                  "advtable",
-                  "autolink",
-                  "checklist",
-                  "export",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "powerpaste",
-                  "fullscreen",
-                  "formatpainter",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "help",
-                  "wordcount",
-                ],
-                toolbar:
-                  "undo redo | casechange blocks | bold italic backcolor | " +
-                  "alignleft aligncenter alignright alignjustify | " +
-                  "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help",
-              }}
-            />
-          </div> */}
-
           <Editor
             apiKey="0admgbzr85ez3s894urkrud61apxtfi7trszikrbisl2sl22"
             onInit={(evt, editor) => (editorRef.current = editor)}
             initialValue="<p>Write your query here.</p>"
             init={{
               height: 400,
+              menu:false,
+              menubar:false,
               plugins: [
                 "a11ychecker",
                 "advlist",

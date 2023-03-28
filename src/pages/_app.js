@@ -1,7 +1,9 @@
-import Layout from "@/components/layout/Layout";
+
+import MainLayout from "@/components/layout/Layout";
 import store from "@/redux/store";
 import "@/styles/globals.css";
 import "@/styles/layout.css";
+import "@/styles/tickets/tickets.css";
 import { Spin } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -30,9 +32,9 @@ export default function App({ Component, pageProps }) {
       {
         isLoading ? <Spin /> : isAuthenticated === "loggedIn" ?
           <Provider store={store}>
-            <Layout>
+            <MainLayout>
               <Component {...pageProps} />
-            </Layout>
+            </MainLayout>
           </Provider> :
           <Component {...pageProps} />
       }

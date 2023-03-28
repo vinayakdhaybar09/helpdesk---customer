@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { Layout as HelpdeskLayout, Menu } from "antd";
+import { Layout as HelpdeskLayout, Layout, Menu } from "antd";
 import { useRouter } from "next/router";
 import shortLogo from "@/assets/images/logo/logo_short.png";
+import profile from "@/assets/images/ticket/profile.png";
 // import { Header } from "antd/es/layout/layout";
 
 import { HiHome } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import { GiTicket } from "react-icons/gi";
 import { FiLogOut } from "react-icons/fi";
+import Image from "next/image";
+import { BsBellFill } from "react-icons/bs";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
-const Layout = (props) => {
+const { Header } = Layout;
+
+
+const MainLayout = (props) => {
   const { Sider } = HelpdeskLayout;
   function getItem(label, key, icon, children) {
     return {
@@ -98,9 +105,16 @@ const Layout = (props) => {
         </Sider>
       </div>
       <HelpdeskLayout className="site-layout">
-        {/* <Header style={{ padding: 0, background: colorBgContainer }}>
-          Hello Header
-        </Header> */}
+        <Header className="header">
+          <h1>Help Desk</h1>
+          <div className="header-option">
+            <BsBellFill className="bell-icon" />
+            <div className="profile-image-box">
+              <Image className="profile-image" src={profile} alt="profile" />
+            </div>
+            <RiArrowDropDownLine className="dropdown-icon" />
+          </div>
+        </Header>
         {props.children}
         {/* <img src={shortLogo?.src} alt="Logo" /> */}
       </HelpdeskLayout>
@@ -108,4 +122,4 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+export default MainLayout;
