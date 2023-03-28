@@ -1,18 +1,19 @@
 import withAuth from "@/hooks/useAuth";
-import React from "react";
+import React, { useRef } from "react";
 import style from "@/styles/tickets/tickets.module.css";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { Select, message, Upload } from "antd";
 // import { Editor } from "tinymce/tinymce";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useRouter } from "next/dist/client/router";
+import { Editor } from "@tinymce/tinymce-react";
 
 const CreateTicket = () => {
   const router = useRouter();
-  // const editorRef = useRef(null);
+  const editorRef = useRef(null);
 
-  const handleChange = () => {
-    // console.log(`selected ${value}`);
+  const handleChange = (value) => {
+    console.info(`selected ${value}`);
   };
 
   const { Dragger } = Upload;
@@ -23,7 +24,7 @@ const CreateTicket = () => {
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {
-        // console.log(info.file, info.fileList);
+        console.info(info.file, info.fileList);
       }
       if (status === "done") {
         message.success(`${info.file.name} file uploaded successfully.`);
@@ -31,9 +32,13 @@ const CreateTicket = () => {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
-    onDrop() {
-      // console.log("Dropped files", e.dataTransfer.files);
+    onDrop(e) {
+      console.info("Dropped files", e.dataTransfer.files);
     },
+  };
+
+  const handleEditorChange = () => {
+    // console.log(editorRef.current.getContent());
   };
 
   return (
@@ -42,14 +47,14 @@ const CreateTicket = () => {
         <p>
           All Tickets / <b>New Ticket</b>
         </p>
-      </div>
-      <div className={`${style.createTicketContainer}`}>
         <div className={`${style.createTicketTitle}`}>
           <button onClick={() => router.push("/tickets")}>
             <MdOutlineArrowBack />
           </button>
           <p>Submit a ticket request</p>
         </div>
+      </div>
+      <div className={`${style.createTicketContainer}`}>
         <div className={`${style.createTicketForm}`}>
           <div className={`${style.col1}`}>
             <label>Ticket Summary</label>
@@ -101,45 +106,52 @@ const CreateTicket = () => {
               />
             </div>
           </div>
-          {/* <div className={`${style.col1}`}>
-            <Editor
-              onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue="<p>This is the initial content of the editor.</p>"
-              init={{
-                height: 500,
-                menubar: false,
-                plugins: [
-                  "a11ychecker",
-                  "advlist",
-                  "advcode",
-                  "advtable",
-                  "autolink",
-                  "checklist",
-                  "export",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "powerpaste",
-                  "fullscreen",
-                  "formatpainter",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "help",
-                  "wordcount",
-                ],
-                toolbar:
-                  "undo redo | casechange blocks | bold italic backcolor | " +
+          <Editor
+            apiKey="0admgbzr85ez3s894urkrud61apxtfi7trszikrbisl2sl22"
+            onInit={(evt, editor) => (editorRef.current = editor)}
+            initialValue="<p>Write your query here.</p>"
+            init={{
+              height: 400,
+              menu: false,
+              menubar: false,
+              plugins: [
+                "a11ychecker",
+                "advlist",
+                "advcode",
+                "advtable",
+                "autolink",
+                "checklist",
+                "export",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "searchreplace",
+                "visualblocks",
+                "powerpaste",
+                "fullscreen",
+                "formatpainter",
+                "insertdatetime",
+                "media",
+                "table",
+                "help",
+                "wordcount",
+                "image",
+              ],
+              toolbar: [
+                "undo redo | casechange blocks | bold italic backcolor | " +
                   "alignleft aligncenter alignright alignjustify | " +
-                  "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help",
-              }}
-            />
-          </div> */}
+                  "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help | image",
+              ],
+              content_style:
+                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+            }}
+            onEditorChange={handleEditorChange}
+            // value={blogDetails.blogDescription}
+          />
+
           <div className={`${style.col1}`}>
             <label>Attach Files(Optional)</label>
             <div className="antd-dragger-container">

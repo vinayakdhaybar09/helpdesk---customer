@@ -1,7 +1,7 @@
 .tickets {
   width: 100%;
   height: 100%;
-  padding: 2rem;
+  padding: 0px 2rem;
 }
 
 .noTicketsContainer {
@@ -50,6 +50,9 @@
 /* Create Ticket */
 
 .pagePath {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
   margin: 1rem 0;
 }
@@ -83,13 +86,12 @@
 }
 
 .createTicketTitle button svg {
-  width: 2rem;
-  height: 2rem;
+ font-size: 25px;
 }
 
 .createTicketTitle p {
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 20px;
 }
 
 .createTicketForm {
@@ -141,9 +143,9 @@
 .ticketsTopBarButtonWhite {
   font-size: 1rem;
   font-weight: 500;
-  padding: 0.5rem 1.5rem;
+  padding: 6px 1.5rem;
   color: #ffffff;
-  background: #282a2c;
+  background: #ff842b;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
@@ -159,16 +161,74 @@
 
 .ticketsTopBar {
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+  /* justify-content: flex-end; */
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 1rem;
 }
 
+.ticketsTopBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: none;
+}
+
+.ticketsTopBarButtonLeftWhite {
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  color: #737779;
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #d9d9d9;
+}
+
+.ticketsTopBarButtonLeftWhite:hover {
+  /* color: #FBB81B !important;  */
+  /* border-color: #FBB81B !important; */
+}
+
+.ticketsTopBarRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
 .ticketsTopBarButtonWhite {
+  display: flex;
+  align-items: center;
+  gap: 25px;
   color: #737779;
   background: none;
   border: 1px solid #d9d9d9;
   font-weight: 400;
+}
+
+.ticketsTopBarButtonWhite svg {
+  font-size: 25px;
+}
+
+.usersSearchbar {
+  display: flex;
+  border: 1px solid #d9d9d9;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 10px;
+  border-radius: 4px;
+}
+
+.usersSearchbar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.ticketsTopBarButtonGray {
+  background-color: #ff842b;
+  border: none;
+  padding: 10px 1.5rem;
 }
 
 .ticketsTopBarButtonGray svg path {
@@ -179,4 +239,149 @@
 .ticketIdLink:hover {
   color: #737779;
   text-decoration: underline;
+}
+
+.assignedTo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.assignedTo svg {
+  font-size: 20px;
+}
+
+.assignDropdown {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.assignedBox {
+  display: flex;
+  width: 200px;
+  min-height: fit-content;
+  max-height: 250px;
+  overflow-y: scroll;
+  flex-direction: column;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+}
+
+.assignedInput {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid black; */
+  padding: 8px;
+  gap: 5px;
+  border-bottom: 0.5px solid #d9d9d9;
+}
+
+.assignedInput svg {
+  font-size: 18px;
+}
+
+.assignedInput input {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  /* font-size: 18px; */
+}
+
+.assignedSelf {
+  /* margin-left: 15px; */
+  padding: 8px;
+  border-bottom: 0.5px solid #d9d9d9;
+  cursor: pointer;
+}
+
+.assignedSelf:hover {
+  background-color: lightgray;
+}
+
+.assignedPersonContainer {
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+  /* margin-top: 5px; */
+}
+
+.assignedPerson {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* margin-left: 10px; */
+  padding: 8px;
+  /* border-bottom: 0.5px solid gray; */
+  cursor: pointer;
+}
+
+.assignedPerson svg {
+  font-size: 18px;
+}
+
+.assignedPerson:hover {
+  background-color: lightgray;
+}
+
+.tableUsername {
+  font-weight: 500px;
+  font-size: 14px;
+}
+
+.tableUserEmail {
+  font-weight: 400px;
+  font-size: 13px;
+}
+
+.priorityDropdown {
+  width: 100px;
+  border: none;
+  padding: 0px;
+}
+
+.priorityFlex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.priorityIcon {
+  color: red;
+}
+
+.ticketSummery{
+  width: 300px;
+}
+
+.statusDropdownOpen,
+.statusDropdownClosed,
+.statusDropdownInprogress {
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 100px;
+  text-align: center;
+}
+
+.statusDropdownOpen {
+  border-color: #3097f6;
+  color: #3097f6;
+  background-color: #3097f60d;
+}
+
+.statusDropdownClosed {
+  border-color: #737779;
+  color: #737779;
+  background-color: #7377790d;
+}
+
+.statusDropdownInprogress {
+  border-color: #ff842b;
+  color: #ff842b;
+  background-color: #ff842b0d;
 }

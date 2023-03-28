@@ -28,7 +28,6 @@ function App({ Component, pageProps }) {
     <>
       {
         isLoading ? <Spin /> : isAuthenticated === "loggedIn" ?
-
           <Layout>
             <Component {...pageProps} />
           </Layout>
@@ -36,7 +35,6 @@ function App({ Component, pageProps }) {
           <Component {...pageProps} />
       }
     </>
-
   );
 }
 
